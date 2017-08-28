@@ -34,6 +34,11 @@ class SessionHandlerProxy extends AbstractProxy implements \SessionHandlerInterf
         $this->wrapper = ($handler instanceof \SessionHandler);
         $this->saveHandlerName = $this->wrapper ? ini_get('session.save_handler') : 'user';
     }
+    
+    public function create_sid()
+    {
+        return ($this->handler instanceof \SessionHandler) ? $this->handler->create_sid() : '';
+    }
 
     // \SessionHandlerInterface
 
